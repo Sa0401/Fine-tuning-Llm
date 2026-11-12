@@ -1,0 +1,101 @@
+app:
+  title: "LLM Fine-Tuning Studio – LoRA & QLoRA"
+  version: "1.0.0"
+  description: "Production-quality Fine-Tuning Studio for Apple Silicon (MLX) & NVIDIA CUDA (PEFT)"
+
+storage:
+  database_path: "database/experiments.db"
+  data_dir: "data"
+  models_dir: "models/base"
+  adapters_dir: "models/adapters"
+  experiments_dir: "experiments"
+  sample_data_dir: "sample_datasets"
+
+hardware:
+  prefer_mlx: true
+  auto_detect: true
+
+supported_models:
+  - id: "mlx-community/Qwen2.5-0.5B-Instruct-4bit"
+    name: "Qwen 2.5 0.5B Instruct (4-bit)"
+    backend: "mlx"
+    type: "qlora"
+    params: "0.5B"
+    quantization: "4-bit"
+    description: "Ultra-fast lightweight 4-bit quantized model, ideal for MacBook Air M5 (16GB)."
+  - id: "mlx-community/Qwen2.5-0.5B-Instruct-8bit"
+    name: "Qwen 2.5 0.5B Instruct (8-bit)"
+    backend: "mlx"
+    type: "qlora"
+    params: "0.5B"
+    quantization: "8-bit"
+    description: "Lightweight 8-bit quantized model for native Apple Silicon."
+  - id: "mlx-community/Qwen2.5-0.5B-Instruct"
+    name: "Qwen 2.5 0.5B Instruct (Full Precision)"
+    backend: "mlx"
+    type: "lora"
+    params: "0.5B"
+    quantization: "None (fp16/bfloat16)"
+    description: "Base full-precision 0.5B model for standard LoRA fine-tuning."
+  - id: "mlx-community/Qwen2.5-1.5B-Instruct-4bit"
+    name: "Qwen 2.5 1.5B Instruct (4-bit)"
+    backend: "mlx"
+    type: "qlora"
+    params: "1.5B"
+    quantization: "4-bit"
+    description: "High quality 1.5B 4-bit model, great balance of intelligence and memory efficiency."
+  - id: "mlx-community/Qwen2.5-1.5B-Instruct"
+    name: "Qwen 2.5 1.5B Instruct (Full Precision)"
+    backend: "mlx"
+    type: "lora"
+    params: "1.5B"
+    quantization: "None (fp16/bfloat16)"
+    description: "Standard 1.5B model for native Apple Silicon LoRA fine-tuning."
+  - id: "Qwen/Qwen2.5-0.5B-Instruct"
+    name: "Qwen 2.5 0.5B Instruct (Hugging Face)"
+    backend: "cuda"
+    os: ["Windows", "macOS", "Linux"]
+    type: "lora_and_qlora"
+    params: "0.5B"
+    quantization: "Configurable (NF4 / 8-bit / fp16)"
+    description: "Standard Hugging Face model for Windows NVIDIA CUDA, CPU fallback, and Linux."
+  - id: "Qwen/Qwen2.5-1.5B-Instruct"
+    name: "Qwen 2.5 1.5B Instruct (Hugging Face)"
+    backend: "cuda"
+    os: ["Windows", "macOS", "Linux"]
+    type: "lora_and_qlora"
+    params: "1.5B"
+    quantization: "Configurable (NF4 / 8-bit / fp16)"
+    description: "High quality 1.5B Hugging Face model for Windows CUDA fine-tuning with PEFT & BitsAndBytes."
+
+default_hyperparameters:
+  lora:
+    rank: 8
+    alpha: 16.0
+    dropout: 0.05
+    learning_rate: 1.0e-4
+    batch_size: 4
+    num_layers: 8
+    iterations: 100
+    max_seq_length: 512
+    optimizer: "adamw"
+    warmup_steps: 10
+  qlora:
+    rank: 8
+    alpha: 16.0
+    dropout: 0.05
+    learning_rate: 2.0e-4
+    batch_size: 4
+    num_layers: 8
+    iterations: 100
+    max_seq_length: 512
+    optimizer: "adamw"
+    warmup_steps: 10
+    quantization_bits: 4
+    double_quant: true
+    quant_type: "nf4"
+
+api_server:
+  host: "127.0.0.1"
+  port: 8000
+

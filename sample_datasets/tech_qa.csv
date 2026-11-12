@@ -1,0 +1,7 @@
+question,answer
+"What is Docker?","Docker is an open-source platform that automates the deployment of applications inside lightweight, portable software containers."
+"What is a REST API?","A REST API is an architectural style for networked applications that relies on stateless communication protocols, typically HTTP, using standard methods like GET, POST, PUT, and DELETE."
+"What is gradient descent?","Gradient descent is an optimization algorithm used to minimize a loss function by iteratively moving in the direction of steepest descent defined by the negative gradient."
+"What is the difference between SQL and NoSQL?","SQL databases are relational, table-based, and have structured schemas. NoSQL databases are non-relational, document- or key-value-based, and offer flexible schemas for unstructured data."
+"What is cross-entropy loss?","Cross-entropy loss measures the performance of a classification model whose output is a probability value between 0 and 1, penalizing incorrect high-confidence predictions heavily."
+

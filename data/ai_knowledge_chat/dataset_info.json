@@ -1,0 +1,7 @@
+{
+  "name": "ai_knowledge_chat",
+  "train_samples": 8,
+  "valid_samples": 2,
+  "test_samples": 0,
+  "total_samples": 10
+}
