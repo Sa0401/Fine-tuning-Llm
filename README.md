@@ -230,3 +230,5 @@ To deploy without adapter runtime dependencies:
 
 ## 📄 License
 MIT License. Built for Apple Silicon (macOS) and Windows / Linux AI developers.
+Author: [Sarathy S](https://github.com/Sa0401)
+
