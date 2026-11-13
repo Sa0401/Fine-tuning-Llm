@@ -50,3 +50,9 @@ experiments/*
 !experiments/.gitkeep
 database/*.db
 database/*.db-journal
+
+# Screen recordings & media files
+*.mp4
+*.mov
+studio_features_walkthrough.mp4
+

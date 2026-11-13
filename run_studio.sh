@@ -22,5 +22,5 @@ else
 fi
 
 echo "[INFO] Launching Streamlit Studio..."
-streamlit run app.py --server.port=8501
+python -m streamlit run app.py --server.port=8501
 
